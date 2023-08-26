@@ -5,7 +5,8 @@ from pymongo.server_api import ServerApi
 app = Flask(__name__, template_folder="templates", static_folder="static")
 client = MongoClient("localhost", 27017)
 db = client["mari_tcc"]
-
+global current_user
+current_user = "none"
 
 @app.route("/")
 def start_page():
@@ -14,6 +15,7 @@ def start_page():
 
 @app.route("/login", methods=["GET", "POST"])
 def login_page():
+    global current_user
     if request.method == "GET":
         return render_template("login.html")
 
@@ -22,6 +24,7 @@ def login_page():
             "name": request.form["user_name"],
             "password": request.form["user_password"],
         }
+        current_user = request.form["user_name"]
         user = db["users"].find_one(user_doc)
         if user == None:
             return redirect("/login")
@@ -30,6 +33,7 @@ def login_page():
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup_page():
+    global current_user
     if request.method == "GET":
         return render_template("login.html")
 
@@ -38,6 +42,7 @@ def signup_page():
             "name": request.form["user_name"],
             "password": request.form["user_password"],
         }
+        current_user = request.form["user_name"]
         user = db["users"].find_one(user_doc)
         if user == None:
             db["users"].insert_one(user_doc)
@@ -47,7 +52,8 @@ def signup_page():
 
 @app.route("/home")
 def home_page():
-    return render_template("home.html")
+    global current_user
+    return render_template("home.html", current_user = current_user)
 
 
 app.run(port=5000, debug=True)

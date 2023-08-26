@@ -10,10 +10,10 @@
 <body>
   <header>
     <div id="imageTopBar">
-      <img src="https://icones.pro/wp-content/uploads/2021/04/icone-cercle-rempli-gris.png">
+      <img src="https://static.vecteezy.com/system/resources/previews/008/844/895/non_2x/user-icon-design-free-png.png">
     </div>
     <div id="textTopBar">
-      <h4>nome do usuário</h4>
+      <h4>{{current_user}}</h4>
       <p>EM PARTIDA</p>
     </div>
   </header>
@@ -22,18 +22,55 @@
 
   <main>
     <section class="interacoes">
-      <h1>Interações <img src="https://cdn-icons-png.flaticon.com/512/3444/3444393.png" class="saibaMais"></h1>
+      <h1>Interações <button class="open-button" onclick="openForm('interacoes_helper')"><img src="https://cdn-icons-png.flaticon.com/512/3444/3444393.png" class="saibaMais"></button></h1>
       <button> <img src="https://img.freepik.com/vetores-premium/qr-code_578229-236.jpg"> escanear cenário </button>
       <br>
       <button> <img src="https://cdn-icons-png.flaticon.com/512/653/653780.png"> criar cenário </button>
     </section>
 
+    <div class="form-popup" id="interacoes_helper">
+      <form action="/action_page.php" class="form-container">
+        <p>
+          Caso caia em uma casa <b>com</b> um <b>QR code</b>, clique no botão:
+        </p>
+        <img src="https://img.freepik.com/vetores-premium/qr-code_578229-236.jpg">
+        <p>
+          Caso caia em uma casa <b>sem</b> um <b>QR code</b>, clique no botão:
+        </p>
+        <img src="https://cdn-icons-png.flaticon.com/512/653/653780.png">
+        <button type="button" class="btn cancel" onclick="closeForm('interacoes_helper')">Close</button>
+      </form>
+    </div>
+
     <hr>
 
     <section class="fichas">
-      <h1>contagem de cartas <img src="https://cdn-icons-png.flaticon.com/512/3444/3444393.png" class="saibaMais"></h1>
+      
+      <h1>contagem de cartas <button class="open-button" onclick="openForm('cartas_helper')"><img src="https://cdn-icons-png.flaticon.com/512/3444/3444393.png" class="saibaMais"></button></h1>
       <button> adicionar fichas </button>
     </section>
+
+    <div class="form-popup" id="cartas_helper">
+      <form action="/action_page.php" class="form-container">
+        <p>
+          Ao receber um ficha de pensamento intrusivo, adicione a ficha na contagem para receber sua <b>recompensa</b> no final do jogo!
+        </p>
+        <p>
+          Não esqueça de adicionar todas as suas fichas <b>antes do final do jogo</b>
+        </p>
+        <button type="button" class="btn cancel" onclick="closeForm('cartas_helper')">Close</button>
+      </form>
+    </div>
+    
+    <script>
+      function openForm(form_id) {
+        document.getElementById(form_id).style.display = "block";
+      }
+      
+      function closeForm(form_id) {
+        document.getElementById(form_id).style.display = "none";
+      }
+    </script>
   </main>
 
   <hr>
