@@ -22,10 +22,13 @@
 
   <main>
     <section class="interacoes">
-      <h1>Interações <button class="open-button" onclick="openForm('interacoes_helper'), closeForm('cartas_helper')"><img src="https://cdn-icons-png.flaticon.com/512/3444/3444393.png" class="saibaMais"></button></h1>
+      <h1>Interações <img src="https://cdn-icons-png.flaticon.com/512/3444/3444393.png" class="saibaMais"
+          onclick="openForm('interacoes_helper'), closeForm('cartas_helper')"></h1>
       <button> <img src="https://img.freepik.com/vetores-premium/qr-code_578229-236.jpg"> escanear cenário </button>
       <br>
-      <button> <img src="https://cdn-icons-png.flaticon.com/512/653/653780.png"> criar cenário </button>
+      <button> <img src="https://cdn-icons-png.flaticon.com/512/653/653780.png"><a
+          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"> criar cenário</a>
+      </button>
     </section>
 
     <div class="form-popup" id="interacoes_helper">
@@ -45,15 +48,17 @@
     <hr>
 
     <section class="fichas">
-      
-      <h1>contagem de cartas <button class="open-button" onclick="openForm('cartas_helper'), closeForm('interacoes_helper')"><img src="https://cdn-icons-png.flaticon.com/512/3444/3444393.png" class="saibaMais"></button></h1>
+
+      <h1>contagem de cartas <img src="https://cdn-icons-png.flaticon.com/512/3444/3444393.png" class="saibaMais"
+          onclick="openForm('cartas_helper'), closeForm('interacoes_helper')"></h1>
       <button> adicionar fichas </button>
     </section>
 
     <div class="form-popup" id="cartas_helper">
       <form action="/action_page.php" class="form-container">
         <p>
-          Ao receber um ficha de pensamento intrusivo, adicione a ficha na contagem para receber sua <b>recompensa</b> no final do jogo!
+          Ao receber um ficha de pensamento intrusivo, adicione a ficha na contagem para receber sua <b>recompensa</b>
+          no final do jogo!
         </p>
         <p>
           Não esqueça de adicionar todas as suas fichas <b>antes do final do jogo</b>
@@ -61,12 +66,12 @@
         <button type="button" class="btn cancel" onclick="closeForm('cartas_helper')">Close</button>
       </form>
     </div>
-    
+
     <script>
       function openForm(form_id) {
         document.getElementById(form_id).style.display = "block";
       }
-      
+
       function closeForm(form_id) {
         document.getElementById(form_id).style.display = "none";
       }
