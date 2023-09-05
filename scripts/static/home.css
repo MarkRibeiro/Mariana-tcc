@@ -1,10 +1,43 @@
+hr {
+  width: 90%;
+}
+
+button{
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.emPartida{
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
+.jogador{
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
 body {
-  width: 1080px;
-  height: 1920px;
   background: #000;
   color: #fff;
   padding: 25px;
   font-family: sans-serif;
+  margin: 0px;
+}
+
+.interacoes{
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+}
+
+.fichas{
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
 }
 
 img {
@@ -21,11 +54,7 @@ header {
 }
 
 #textTopBar {
-  margin-left: 30px;
-}
-
-#imageTopBar  {
-    margin-top: 25px;
+  margin-left: 0px;
 }
 
 main button {
@@ -34,6 +63,11 @@ main button {
 
 footer button {
   margin-right: 20px;
+}
+
+footer{
+  display: flex;
+  justify-content: center;
 }
 
 

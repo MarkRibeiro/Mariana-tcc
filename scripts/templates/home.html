@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>TCC app teste</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,25 +8,19 @@
 
 <body>
   <header>
-    <div id="imageTopBar">
-      <img src="https://static.vecteezy.com/system/resources/previews/008/844/895/non_2x/user-icon-design-free-png.png">
-    </div>
     <div id="textTopBar">
-      <h4>{{current_user}}</h4>
-      <p>EM PARTIDA</p>
+      <h4 class = "jogador">{{current_user}}</h4>
+      <p class ="emPartida" >EM PARTIDA</p>
     </div>
   </header>
-
-  <hr>
 
   <main>
     <section class="interacoes">
       <h1>Interações <img src="https://cdn-icons-png.flaticon.com/512/3444/3444393.png" class="saibaMais"
           onclick="openForm('interacoes_helper'), closeForm('cartas_helper')"></h1>
       <button> <img src="https://img.freepik.com/vetores-premium/qr-code_578229-236.jpg"> escanear cenário </button>
-      <br>
-      <button> <img src="https://cdn-icons-png.flaticon.com/512/653/653780.png"><a
-          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"> criar cenário</a>
+      <button> <img src="https://cdn-icons-png.flaticon.com/128/3342/3342137.png"><a
+          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target = "_blank"> criar cenário</a>
       </button>
     </section>
 
