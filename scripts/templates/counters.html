@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contagem de Fichas</title>
+    <link rel="stylesheet" href="static/counters.css">
+</head>
+
+<body>
+    <div class="container">
+        <form action="" method="POST" id="countersForm">
+            <h1>Contagem de Fichas</h1>
+            <div class="counter">
+                <h1>Roxo</h1>
+                <button type="button" onclick="decrement('counterPurple')" id="increment-btn">-</button>
+                <input type="text" min="0" inputmode="numeric" id="counterPurple" class="counter-value"
+                    name="counterPurple" value="{{counters.purple}}" />
+                <button type="button" onclick="increment('counterPurple')" id="decrement-btn">+</button>
+            </div>
+            <div class="counter">
+                <h1>Rosa</h1>
+                <button type="button" onclick="decrement('counterPink')" id="increment-btn">-</button>
+                <input type="text" min="0" inputmode="numeric" id="counterPink" class="counter-value" name="counterPink"
+                    value="{{counters.pink}}" />
+                <button type="button" onclick="increment('counterPink')" id="decrement-btn">+</button>
+            </div>
+            <div class="counter">
+                <h1>Laranja</h1>
+                <button type="button" onclick="decrement('counterOrange')" id="increment-btn">-</button>
+                <input type="text" min="0" inputmode="numeric" id="counterOrange" class="counter-value"
+                    name="counterOrange" value="{{counters.orange}}" />
+                <button type="button" onclick="increment('counterOrange')" id="decrement-btn">+</button>
+            </div>
+            <div class="counter">
+                <h1>Amarelo</h1>
+                <button type="button" onclick="decrement('counterYellow')" id="increment-btn">-</button>
+                <input type="text" min="0" inputmode="numeric" id="counterYellow" class="counter-value"
+                    name="counterYellow" value="{{counters.yellow}}" />
+                <button type="button" onclick="increment('counterYellow')" id="decrement-btn">+</button>
+            </div>
+            <div class="counter">
+                <h1>Verde</h1>
+                <button type="button" onclick="decrement('counterGreen')" id="increment-btn">-</button>
+                <input type="text" min="0" inputmode="numeric" id="counterGreen" class="counter-value"
+                    name="counterGreen" value="{{counters.green}}" />
+                <button type="button" onclick="increment('counterGreen')" id="decrement-btn">+</button>
+            </div>
+            <div>
+                <div class="reset">
+                    <h3><button type="submit" value="Entrar">Salvar</button></h3>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        //creation of increment function
+        function increment(counterId) {
+            var value = document.getElementById(counterId).getAttribute('value')
+            document.getElementById(counterId).setAttribute('value', parseInt(value) + 1);
+        }
+        //creation of decrement function
+        function decrement(counterId) {
+            var value = document.getElementById(counterId).getAttribute('value')
+            document.getElementById(counterId).setAttribute('value', parseInt(value) - 1);
+        }
+    </script>
+</body>
+
+</html>
