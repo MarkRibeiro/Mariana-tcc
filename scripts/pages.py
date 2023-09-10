@@ -9,6 +9,35 @@ db = client["mari_tcc"]
 global current_user
 current_user = "none"
 
+user_achievements = {
+    "achievement_1": False,
+    "achievement_2": False,
+    "achievement_3": False,
+    "achievement_4": False,
+    "achievement_5": False,
+    "achievement_6": False,
+    "achievement_7": False,
+    "achievement_8": False,
+    "achievement_9": False,
+    "achievement_10": False,
+    "achievement_11": False,
+    "achievement_12": False,
+    "achievement_13": False,
+    "achievement_14": False,
+    "achievement_15": False,
+    "achievement_16": False,
+    "achievement_17": False,
+    "achievement_18": False,
+    "achievement_19": False,
+    "achievement_20": False,
+    "achievement_21": False,
+    "achievement_22": False,
+    "achievement_23": False,
+    "achievement_24": False,
+    "achievement_25": False,
+    "achievement_26": False,
+}
+
 
 @app.route("/")
 def start_page():
@@ -43,6 +72,7 @@ def signup_page():
         user_doc = {
             "name": request.form["user_name"],
             "password": request.form["user_password"],
+            "achievements": user_achievements,
         }
         current_user = request.form["user_name"]
         user = db["users"].find_one(user_doc)
