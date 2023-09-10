@@ -30,7 +30,7 @@ def login_page():
         user = db["users"].find_one(user_doc)
         if user == None:
             return redirect("/login")
-        return redirect("/home")
+        return redirect("/achievements")
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -48,13 +48,34 @@ def signup_page():
         user = db["users"].find_one(user_doc)
         if user == None:
             db["users"].insert_one(user_doc)
-            return redirect("/home")
+            return redirect("/achievements")
         return redirect("/signup")
 
 
-@app.route("/home")
+@app.route("/achievements")
+def achievements_page():
+    global current_user
+    return render_template("achievements.html", current_user=current_user)
+
+
+@app.route("/home", methods=["GET", "POST"])
 def home_page():
     global current_user
+    if request.method == "GET":
+        match_doc = {
+            "user": current_user,
+            "ongoing": True,
+        }
+        match = db["matches"].find_one(match_doc)
+        if match == None:
+            match_doc["counters"] = {
+                "purple": 0,
+                "pink": 0,
+                "orange": 0,
+                "yellow": 0,
+                "green": 0,
+            }
+            db["matches"].insert_one(match_doc)
     return render_template("home.html", current_user=current_user)
 
 
@@ -66,27 +87,11 @@ def counters_page():
         "ongoing": True,
     }
     match = db["matches"].find_one(match_doc)
-    if match == None:
-        match_doc["counters"] = {
-            "purple": 0,
-            "pink": 0,
-            "orange": 0,
-            "yellow": 0,
-            "green": 0,
-        }
-        db["matches"].insert_one(match_doc)
 
     if request.method == "GET":
-        if match == None:
-            return render_template(
-                "counters.html",
-                current_user=current_user,
-                counters=match_doc["counters"],
-            )
-        else:
-            return render_template(
-                "counters.html", current_user=current_user, counters=match["counters"]
-            )
+        return render_template(
+            "counters.html", current_user=current_user, counters=match["counters"]
+        )
 
     if request.method == "POST":
         new_values = {

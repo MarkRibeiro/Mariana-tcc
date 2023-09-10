@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>TCC app teste</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,8 +10,8 @@
 <body>
   <header>
     <div id="textTopBar">
-      <h4 class = "jogador">{{current_user}}</h4>
-      <p class ="emPartida" >EM PARTIDA</p>
+      <h4 class="jogador">{{current_user}}</h4>
+      <p class="emPartida">EM PARTIDA</p>
     </div>
   </header>
 
@@ -20,7 +21,7 @@
           onclick="openForm('interacoes_helper'), closeForm('cartas_helper')"></h1>
       <button> <img src="https://img.freepik.com/vetores-premium/qr-code_578229-236.jpg"> escanear cenário </button>
       <button> <img src="https://cdn-icons-png.flaticon.com/128/3342/3342137.png"><a
-          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target = "_blank"> criar cenário</a>
+          href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"> criar cenário</a>
       </button>
     </section>
 
@@ -44,7 +45,7 @@
 
       <h1>contagem de cartas <img src="https://cdn-icons-png.flaticon.com/512/3444/3444393.png" class="saibaMais"
           onclick="openForm('cartas_helper'), closeForm('interacoes_helper')"></h1>
-      <button> adicionar fichas </button>
+      <button><a href="{{ url_for('counters_page') }}"> adicionar fichas </a></button>
     </section>
 
     <div class="form-popup" id="cartas_helper">
