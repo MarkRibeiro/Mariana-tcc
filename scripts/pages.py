@@ -9,33 +9,38 @@ db = client["mari_tcc"]
 global current_user
 current_user = "none"
 
+global current_user_password
+current_user_password = "none"
+
+achievemet_images = []
+
 user_achievements = {
-    "achievement_1": False,
-    "achievement_2": False,
-    "achievement_3": False,
-    "achievement_4": False,
-    "achievement_5": False,
-    "achievement_6": False,
-    "achievement_7": False,
-    "achievement_8": False,
-    "achievement_9": False,
-    "achievement_10": False,
-    "achievement_11": False,
-    "achievement_12": False,
-    "achievement_13": False,
-    "achievement_14": False,
-    "achievement_15": False,
-    "achievement_16": False,
-    "achievement_17": False,
-    "achievement_18": False,
-    "achievement_19": False,
-    "achievement_20": False,
-    "achievement_21": False,
-    "achievement_22": False,
-    "achievement_23": False,
-    "achievement_24": False,
-    "achievement_25": False,
-    "achievement_26": False,
+    "conquista_01": False,
+    "conquista_02": False,
+    "conquista_03": False,
+    "conquista_04": False,
+    "conquista_05": False,
+    "conquista_06": False,
+    "conquista_07": False,
+    "conquista_08": False,
+    "conquista_09": False,
+    "conquista_10": False,
+    "conquista_11": False,
+    "conquista_12": False,
+    "conquista_13": False,
+    "conquista_14": False,
+    "conquista_15": False,
+    "conquista_16": False,
+    "conquista_17": False,
+    "conquista_18": False,
+    "conquista_19": False,
+    "conquista_20": False,
+    "conquista_21": False,
+    "conquista_22": False,
+    "conquista_23": False,
+    "conquista_24": False,
+    "conquista_25": False,
+    "conquista_26": False,
 }
 
 
@@ -47,6 +52,7 @@ def start_page():
 @app.route("/login", methods=["GET", "POST"])
 def login_page():
     global current_user
+    global current_user_password
     if request.method == "GET":
         return render_template("login.html")
 
@@ -56,6 +62,7 @@ def login_page():
             "password": request.form["user_password"],
         }
         current_user = request.form["user_name"]
+        current_user_password = request.form["user_password"]
         user = db["users"].find_one(user_doc)
         if user == None:
             return redirect("/login")
@@ -75,6 +82,7 @@ def signup_page():
             "achievements": user_achievements,
         }
         current_user = request.form["user_name"]
+        current_user_password = request.form["user_password"]
         user = db["users"].find_one(user_doc)
         if user == None:
             db["users"].insert_one(user_doc)
@@ -85,7 +93,10 @@ def signup_page():
 @app.route("/achievements")
 def achievements_page():
     global current_user
-    return render_template("achievements.html", current_user=current_user)
+    set_achievements()
+    return render_template(
+        "achievements.html", current_user=current_user, achievements=achievemet_images
+    )
 
 
 @app.route("/home", methods=["GET", "POST"])
@@ -139,6 +150,25 @@ def counters_page():
         }
         db["matches"].update_one(match_doc, new_values)
         return redirect("/home")
+
+
+def set_achievements():
+    global current_user
+    global current_user_password
+    achievemet_images.clear()
+
+    user = db["users"].find_one(
+        {"name": current_user, "password": current_user_password}
+    )
+
+    for key in user["achievements"]:
+        image_name = key
+        if user["achievements"][key] == True:
+            image_name = "/static/" + image_name + "_ativada.png"
+            achievemet_images.append(image_name)
+        else:
+            image_name = "/static/" + image_name + "_desativada.png"
+            achievemet_images.append(image_name)
 
 
 app.run(port=5000, debug=True)

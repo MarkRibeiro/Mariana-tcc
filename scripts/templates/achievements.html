@@ -1,8 +1,50 @@
 <header>
     <div id="textTopBar">
         <h4 class="jogador">{{current_user}}</h4>
-        <p class="emPartida">EM PARTIDA</p>
+        <p class="emPartida">Conquistas 0/26</p>
+        <link rel="stylesheet" href="/static/achievements.css">
     </div>
 </header>
+
+<div class="row">
+    <div class="column">
+        <img id="conquista_1" src='{{achievements[0]}}'>
+        <img id="conquista_2" src='{{achievements[1]}}'>
+        <img id="conquista_3" src='{{achievements[2]}}'>
+        <img id="conquista_4" src='{{achievements[3]}}'>
+        <img id="conquista_5" src='{{achievements[4]}}'>
+    </div>
+    <div class="column">
+        <img id="conquista_6" src='{{achievements[5]}}'>
+        <img id="conquista_7" src='{{achievements[6]}}'>
+        <img id="conquista_8" src='{{achievements[7]}}'>
+        <img id="conquista_9" src='{{achievements[8]}}'>
+        <img id="conquista_10" src='{{achievements[9]}}'>
+    </div>
+    <div class="column">
+        <img id="conquista_11" src='{{achievements[10]}}'>
+        <img id="conquista_12" src='{{achievements[11]}}'>
+        <img id="conquista_13" src='{{achievements[12]}}'>
+        <img id="conquista_14" src='{{achievements[13]}}'>
+        <img id="conquista_15" src='{{achievements[14]}}'>
+    </div>
+    <div class="column">
+        <img id="conquista_16" src='{{achievements[15]}}'>
+        <img id="conquista_17" src='{{achievements[16]}}'>
+        <img id="conquista_18" src='{{achievements[17]}}'>
+        <img id="conquista_19" src='{{achievements[18]}}'>
+        <img id="conquista_20" src='{{achievements[19]}}'>
+    </div>
+    <div class="column">
+        <img id="conquista_21" src='{{achievements[20]}}'>
+        <img id="conquista_22" src='{{achievements[21]}}'>
+        <img id="conquista_23" src='{{achievements[22]}}'>
+        <img id="conquista_24" src='{{achievements[23]}}'>
+        <img id="conquista_25" src='{{achievements[24]}}'>
+    </div>
+    <div class="column">
+        <img id="conquista_26" src='{{achievements[25]}}'>
+    </div>
+</div>
 
 <a href="{{ url_for('home_page') }}"><input type="submit" value="Iniciar Partida" /></a>
